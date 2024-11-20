@@ -35,6 +35,15 @@ class Game:
                            ) -> List[CubeSet]:
         return [cube_set for cube_set in self.cube_sets if not cube_set.within_cube_set(cube_set_to_check)]
 
+    def min_cube_set(self) -> CubeSet:
+        min_dict = {}
+
+        for cub_set in self.cube_sets:
+            for cube_color, num in cub_set.cubes.items():
+                min_dict[cube_color] = max(min_dict.get(cube_color, 0), num)
+
+        return CubeSet(min_dict)
+
     def __repr__(self):
         return f"Game(no = {self.game_no}, cube_sets_no = {len(self.cube_sets)})"
 

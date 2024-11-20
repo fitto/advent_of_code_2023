@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 
 from day_02.domain.cube_color import CubeColor
 
@@ -70,6 +70,10 @@ class CubeSet:
             if self.number_of_cubes(cube_color) > cube_number:
                 return False
         return True
+
+    @property
+    def all_cubes_numbers_list(self) -> List[int]:
+        return [item for item in self.cubes.values()]
 
     def __repr__(self):
         return f"CubeSet({', '.join(f'{key}: {value}' for key, value in self.cubes.items())})"

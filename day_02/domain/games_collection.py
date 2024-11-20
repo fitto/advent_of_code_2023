@@ -29,6 +29,8 @@ class GamesCollection:
                                       ) -> List[Game]:
         return [game for game in self.games_list if not game.possible_cube_sets(cube_set_to_check)]
 
+    def min_cube_sets(self) -> List[CubeSet]:
+        return [game.min_cube_set() for game in self.games_list]
 
     def __repr__(self):
         return f"GamesCollection({len(self.games_list)} games)"
